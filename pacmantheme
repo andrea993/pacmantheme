@@ -31,30 +31,26 @@ def value(x)
 	return a.pack 'c*'
 end	
 
-SQR_12_2=1.05946309
+SQR_12_2=1.05946309 # 2^(1/12)
 
 music="32b,32p,32b6,32p,32f#6,32p,32d#6,32p,32b6,32f#6,16p,16d#6,16p,32c6,32p,32c7,32p,32g6,32p,32e6,32p,32c7,32g6,16p,16e6,16p,32b,32p,32b6,32p,32f#6,32p,32d#6,32p,32b6,32f#6,16p,16d#6,16p,32d#6,32e6,32f6,32p,32f6,32f#6,32g6,32p,32g6,32g#6,32a6,32p,32b6"
 
 freqs=Hash.new
 octavenotes=["c","c#","d","d#","e","f","f#","g","g#","a","a#","b"]
 	
-f=261.6255653006 #first do
-
-for i in (12*4)...(12*8)
+fup=fdown=440 #central a freq
+i=j=12*4+9 #central a
+while(i<=12*7)	
 	oct=(i/12).floor
 	note=i%12
-	freqs["#{octavenotes[note]}#{oct}"]=f
-	f*=SQR_12_2
-end
-
-f=261.6255653006
-
-for i in (12*3)...(12*5)
-	j=12*7-i
+	freqs["#{octavenotes[note]}#{oct}"]=fup
+	fup*=SQR_12_2
+	i+=1	
 	oct=(j/12).floor
 	note=j%12
-	freqs["#{octavenotes[note]}#{oct}"]=f
-	f/=SQR_12_2
+	freqs["#{octavenotes[note]}#{oct}"]=fdown
+	fdown/=SQR_12_2
+	j-=1
 end
 
 freqs["p"]=0
