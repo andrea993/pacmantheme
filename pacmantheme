@@ -1,7 +1,5 @@
 #!/usr/bin/ruby
 
- 
-
 PF="/dev/port"
 
 def play(freq,ms)
