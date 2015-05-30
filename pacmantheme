@@ -37,7 +37,7 @@ freqs=Hash.new
 octavenotes=["c","c#","d","d#","e","f","f#","g","g#","a","a#","b"]
 	
 fup=fdown=440 #central a freq
-i=j=12*4+9 #central a
+i=j=12*5+9 #central a
 while(i<=12*7)	
 	oct=(i/12).floor
 	note=i%12
@@ -68,13 +68,13 @@ freqs["p"]=0
 	elsif thisnote == "p"
 		octave=""
 	else
-		octave=4
+		octave=5
 	end
 
 	#puts "note "+thisnote
 	#puts "octave #{octave}"
 	#puts "time #{time}"
 	#puts freqs["#{thisnote}#{octave}"]
-	play(freqs["#{thisnote}#{octave}"],time*3.5)
+	play(freqs["#{thisnote}#{octave}"],2500/time)
    #puts ""	
 end
